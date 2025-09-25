@@ -1,0 +1,36 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    container_name: laravelreact-app #ubah sesuai yang dimau
+    working_dir: /var/www/html
+    volumes:
+      - ./laravel:/var/www/html
+    ports:
+      - "8000:80" #ubah sesuai yang dimau
+      - "5173:5173" #ubah sesuai yang dimau
+    depends_on:
+      - db
+    networks:
+      - laravel
+
+  db:
+    image: mysql:8.4.6
+    container_name: laravelreact-db #ubah sesuai yang dimau
+    restart: always
+    environment:
+      MYSQL_DATABASE: laravel #ubah sesuai yang dimau .env
+      MYSQL_ROOT_PASSWORD: 
+      MYSQL_USER: 
+      MYSQL_PASSWORD: 
+    ports:
+      - "3306:3306" #ubah sesuai yang dimau
+    volumes:
+      - /var/lib/database/laravelreact:/var/lib/mysql #ubah sesuai yang dimau
+    networks:
+      - laravel
+
+networks:
+  laravel:
+    driver: bridge
