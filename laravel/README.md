@@ -48,14 +48,16 @@ After setting up the Docker containers, make sure to configure the .env file for
 
 cp .env.example .env
 
+must same .env with docker setting
+
 Update the database configuration:
 
-        DB_CONNECTION=mysql
+        DB_CONNECTION=mysql 
         DB_HOST=mysql
         DB_PORT=3306
-        DB_DATABASE=laravel
-        DB_USERNAME=root
-        DB_PASSWORD=root
+        DB_DATABASE=
+        DB_USERNAME=
+        DB_PASSWORD=
 
     Frontend (React)
 
